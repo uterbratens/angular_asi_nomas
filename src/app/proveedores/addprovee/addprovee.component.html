@@ -1,0 +1,36 @@
+<div class="row">
+<div class="col col-md-2"></div>
+<div class="col-10 col-md-8">
+  <h2>añadir proveedor</h2>
+  <form (ngSubmit)="onSubmit()" #formprov='ngForm'>
+
+    <div class="form-group">
+      <label for="nombre">nombre</label>
+      <select ngModel name="nombre" id="nombre" class="form-control">
+        <option value="">seleccione un nombre</option>
+        <option *ngFor="let nombr of nombre" [value]="nombr">{{nombr}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="apellido">apellido</label>
+      <input type="text" class="form-control" id="apellido" ngModel name="apellido">
+    </div>
+
+    <div class="form-group">
+      <label for="mail">mail</label>
+      <i class="fa fa-check-circle check" *ngIf="email.valid"></i>
+      <i class="fa fa-exclamation-circle uncheck" *ngIf="email.invalid && email.touched"></i>
+      <input type="mail" class="form-control" id="mail" ngModel name="mail" required email #email="ngModel">
+      <p class="alert alert-danger" *ngIf="email.invalid && email.touched">introduzca una direccion valida</p>
+    </div>
+
+<button class="btn btn-success" type="submit" [disabled]="!formprov.valid">añadir</button>
+<p class="alert alert-danger" *ngIf="!formprov.valid">complete los campos</p>
+  </form>
+  <pre>
+{{proveedor |json}}
+  </pre>
+<div class="col col-md-2"></div>
+</div>
+</div>

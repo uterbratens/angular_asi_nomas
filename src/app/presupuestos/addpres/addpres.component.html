@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col col-md-2"></div>
+  <div class="col-10 col-md-8">
+    <h2>añadir prresupuesto</h2>
+    <a class="btn btn-primary float-md-right"routerLink="/presupuestos">volver</a>
+    <form [formGroup]="presupuestoForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="proveedor">proveedor</label>
+        <i class="fa fa-check-circle check" *ngIf="presupuestoForm.controls.proveedor.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="presupuestoForm.controls.proveedor.invalid && presupuestoForm.controls.proveedor.touched"></i>
+        <input type="text" class="form-control" id="proveedor" formControlName="proveedor">
+        <p class="alert alert-danger" *ngIf="presupuestoForm.controls.proveedor.invalid && presupuestoForm.controls.proveedor.touched">por
+          favor introduce un campo valido</p>
+      </div>
+      <div class="form-group">
+        <label for="fecha">fecha</label>
+        <i class="fa fa-check-circle check" *ngIf="presupuestoForm.controls.fecha.valid"></i>
+        <i class="fa fa-exclamation-circle uncheck" *ngIf="presupuestoForm.controls.fecha.invalid && presupuestoForm.controls.fecha.touched"></i>
+        <input type="date" class="form-control" id="fecha" formControlName="fecha">
+        <p class="alert alert-danger" *ngIf="presupuestoForm.controls.fecha.invalid && presupuestoForm.controls.fecha.touched">por
+          favor introduce un campo valido</p>
+      </div>
+      <div class="form-group">
+        <label for="concepto">concepto</label>
+        <input type="text" class="form-control" id="concepto" formControlName="concepto">
+      </div>
+      <div class="form-group">
+        <label for="base">base imponible</label>
+        <input type="number" class="form-control" id="base" formControlName="base">
+      </div>
+      <div class="form-group">
+        <label for="tipo">tipo de impuesto</label>
+        <select class="form-control" id="tipo" formControlName="tipo">
+          <option value="">seleccione ....</option>
+          <option value=0>0%</option>
+          <option value=0.04>4%</option>
+          <option value=0.10>10%</option>
+          <option value=0.21>21%</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="iva">iva</label>
+        <input type="number" class="form-control" id="iva" formControlName="iva" [(ngModel)]="presupuestoForm.value.iva" disabled> 
+      </div>
+      <div class="form-group">
+        <label for="total">total</label>
+        <input type="number" class="form-control" id="total" formControlName="total" [(ngModel)]="presupuestoForm.value.total" disabled>
+      </div>
+      <button class="btn btn-success" type="submit" [disabled]="!presupuestoForm.valid">enviar</button>
+      <a href="" class="btn btn-danger" routerLink="/presupuestos">cancelar</a>
+      <p class="alert alert-danger" *ngIf="!presupuestoForm.valid">ingrese todos los campos</p>
+    
+    </form>
+    <pre>
+      valor form: {{presupuestoForm.value | json}}
+    </pre>
+    <pre>
+      estado: {{presupuestoForm.status | json}}
+    </pre>
+    <pre>
+      valor almacenado: {{presupuesto | json}}
+    </pre>
+  </div>
+</div>

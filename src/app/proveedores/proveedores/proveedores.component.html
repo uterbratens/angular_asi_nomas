@@ -1,0 +1,20 @@
+<div class="container">
+  <a class="btn btn-primary float-md-right" routerLink='/addprov'>añadir proveedor</a>
+  <table class="table table-bordered table-striped">
+<thead>
+  <tr class="filters">
+    <th>nombre</th>
+    <th>apellido</th>
+    <th>mail</th>
+  </tr>
+</thead>
+<tbody>
+<tr *ngFor="let proveedor of proveedores">
+<td>{{proveedor.nombre}}</td>
+<td>{{proveedor.apellido}}</td>
+<td><a href="mailto:{{proveedor.mail}}">{{proveedor.mail}}</a></td>
+</tr>
+
+</tbody>
+  </table>
+</div>
